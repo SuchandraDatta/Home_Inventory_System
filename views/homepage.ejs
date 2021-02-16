@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>This is the homepage</title>
+	<style type="text/css">
+	    body
+	    {
+	    	text-align: center;
+	    }
+		.flex-container
+		{
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+		.card-layout
+		{
+			height: 60vh;
+			width: 70vw;
+			border: 2px solid white;
+			margin: 4vh;
+			background-image: url("assets/cardpic.jpg");
+			background-size: cover;
+			background-position: center;
+			box-shadow: 0 0 90px 10px rgba(0,0,0,0.5);
+			
+			
+		}
+		.card-layout > p
+		{
+			font-size: 3em;
+			padding: 1em;
+		}
+		#banner
+		{
+			font-size: 4em;
+		}
+		#welcome
+		{
+			font-size: 2em;
+		}
+		.mybutton
+		{
+			position: relative;
+			margin-left: auto;
+			margin-right: auto;
+			font-size: 2em;
+			color: white;
+			height: 2em;
+			width: 6em;
+			padding: 0.5em;
+			background-color: #e64a19;
+			border-radius: 2em;
+		}
+		.mybutton > a
+		{
+			text-decoration: none;
+			color: white;
+			font-weight: bolder;
+		}
+	</style>
+</head>
+<body>
+	<b><p id="banner">Home Inventory System</p></b>
+	<b><p id="welcome">What would you like to do ?</p></b>
+	<div class="flex-container">
+		<div class="flex-item card-layout">
+			<p>Save product information to the Firebase Realtime Database.
+				<div class="mybutton"><a href="save_data.ejs">Save Data</a></div>
+			</p>
+		</div>
+		<div class="flex-item card-layout">
+			<p>Query data from Firebase to look for products, check expiration dates and more!
+				<div class="mybutton"><a href="search_data.ejs">Search Data</a></div>
+			</p>
+		</div>
+	</div>
+</body>
+</html>

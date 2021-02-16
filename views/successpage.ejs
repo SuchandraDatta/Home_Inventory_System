@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>This is success page</title>
+	<style>
+	body
+	{
+		font-size: 2em;
+	}
+	.mybutton
+		{
+			position: relative;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 15vw;
+			color: white;
+			height: 2em;
+			width: 9em;
+			background-color: #e64a19;
+			border-radius: 2em;
+		}
+		.mybutton > a
+		{
+			text-decoration: none;
+			color: white;
+			font-weight: bolder;
+		}
+		img
+		{
+			height: 60vh;
+		}
+		div
+		{
+			padding: 1em;
+			text-align: center;
+			color: #6c63ff;
+			text-shadow: 2px 12px 20px rgba(0,0,0,1);
+			width: 60vw;
+			position: relative;
+			margin: auto 30vw;
+		}
+	</style>
+</head>
+<body>
+	<img src="assets/success.png">
+	<div>
+		<h3>Your data has been submitted successfully to our database!What would you like to do now ?</h3>
+		<div class="mybutton"><a href="/">HomePage</a></div>
+		<div class="mybutton"><a href="search_data.ejs">Search Data</a></div>
+	</div>
+</body>
+</html>

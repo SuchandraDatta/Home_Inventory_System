@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>This is save data page</title>
+	<style>
+	 body
+	 {
+	 	font-size: 2em;
+	 	padding: 2em;
+	 }
+	 form
+	 {
+	 	padding: 2em;
+	 }
+	 input, select
+	 {
+	 	height: 3em;
+	 	width: 30vw;
+	 	
+	 }
+	 .mybutton
+		{
+			position: relative;
+			margin-left: auto;
+			margin-right: auto;
+			color: white;
+			height: 2em;
+			width: 9em;
+			background-color: #e64a19;
+			border-radius: 2em;
+		}
+		.mybutton > a
+		{
+			text-decoration: none;
+			color: white;
+			font-weight: bolder;
+		}
+		.form-card
+		{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<p>How many products do you want to save ? At a time, you can save 1 to 10 products to database</p>
+		<input type="number" name="numberOfItems" required="required" placeholder="Number of products to save">
+		<button class="mybutton" onclick="show_cards()">SUBMIT</button>
+	<form name="saveDataForm" method="POST" action="successpage">
+		<div class="form-card">
+			<fieldset>
+				<br/>
+				<legend>Product 1</legend>
+				<label for="productName">Product Name:</label>
+				<input type="text" name="productName">
+				<br/><br/>
+				<label for="productCategory">Product Category:</label>
+				<select name="productCategory">
+					<option value="Chips">Chips</option>
+					<option value="Biscuits">Biscuits</option>
+					<option value="Dal">Dal</option>
+				</select>
+				<br/><br/>
+				<label for="price">Price:</label>
+				<input type="number" name="price">
+				<br/><br/>
+				<label for="quantity">Quantity:</label>
+				<input type="number" name="quantity">	
+			</fieldset>
+		</div>
+	</form>
+	<script type="text/javascript">
+		function show_cards()
+		{
+			repeat_N_times = parseInt(document.getElementsByName("numberOfItems")[0].value)
+			console.log(repeat_N_times)
+			let each_product = ""
+			if(Number.isNaN(repeat_N_times)!=true)
+				{
+					document.getElementsByClassName("form-card")[0].style.display = "block";
+				    for(let i=1;i<=repeat_N_times;i++)
+				    {
+
+				    	each_product = each_product + '<fieldset> <br/> <legend>Product' + i + '</legend> <label for="productName' + i + '">Product Name:</label> <input type="text" name="productName' + i + '" required="required"> <br/><br/> <label for="productCategory'+i+'">Product Category:</label> <select name="productCategory'+i+'" required="required"> <option value="Chips">Chips</option> <option value="Biscuits">Biscuits</option> <option value="Dal">Dal</option> </select> <br/><br/> <label for="price'+i+'">Price:</label> <input type="number" name="price'+i+'" required="required"> <br/><br/> <label for="quantity'+i+'">Quantity:</label> <input type="number" name="quantity'+i+'" required="required"> </fieldset>'
+				    }
+				    required_HTML = each_product + '<button class="mybutton" value="submit" name="submit">SUBMIT</button>'
+					document.getElementsByClassName("form-card")[0].innerHTML = required_HTML
+
+				}
+			else
+				window.alert("HMM")
+		}
+	</script>
+</body>
+</html>
