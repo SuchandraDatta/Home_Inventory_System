@@ -21,7 +21,11 @@ app.get("/search_data.ejs", (req,res,next)=>{
 })
 app.post("/successpage", objForUrlencoded, (req,res)=>{
 	console.log(firebase_functions)
-	firebase_functions.firebase_save_data(req.body)
-	res.render("successpage")
+	firebase_functions.firebase_save_data(req.body, res)
+	//res.render("successpage")
+})
+app.post("/search_data.ejs", (req, res, next)=>{
+	category = req.body["cat"]
+	firebase_functions.firebase_retrieve_data(category)
 })
 app.listen(1337, ()=>{ console.log("Listening on port 1337")})
