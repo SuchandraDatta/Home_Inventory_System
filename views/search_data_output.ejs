@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>This is search data output page</title>
+	<style type="text/css">
+		body
+		{
+			background-image: url("assets/galaxy.jpg");
+			background-size: cover;
+			color: white
+			
+		}
+	</style>
+</head>
+<body>
+
+		<% if(Product_Info!={}) { for(x in Product_Info) { temp = x.split(" ")[0]; temp = temp.substr(0, temp.lastIndexOf("_"))%>
+		<h1>ITEM NAME: <%=  temp %></h1>
+		<h2>PRICE: <%= Product_Info[x].Price %></h2>
+		<h2>QUANTITY: <%= Product_Info[x].Quantity %></h2>
+		<% } } %>
+</body>
+</html>

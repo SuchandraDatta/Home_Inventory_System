@@ -7,13 +7,24 @@
 		{
 			background-image: url("assets/galaxy.jpg");
 			background-size: cover;
+			color: white
 			
 		}
 	</style>
 </head>
 <body>
-		<form action="search_data.ejs" method="POST">
+		<form action="search_data_output.ejs" method="POST">
 		<input type="text" name="cat" placeholder="Search category">
+		<select name="filter">
+			<option value="Price">Price</option>
+			<option value="Quantity">Quantity</option>
+			<option value="Nothing">Nothing</option>
+		</select>
+		<select name="aggregate_over">
+			<option value="Price">Price</option>
+			<option value="Quantity">Quantity</option>
+			<option value="Nothing">Nothing</option>
+		</select>
 		<input type="submit" name="submit" value="submit">
 		</form>
 </body>
