@@ -5,27 +5,86 @@
 	<style type="text/css">
 		body
 		{
+			/*background-image: url("assets/galaxy.jpg");*/
+			background-size: cover;
+			color: white;
+			font-size: 1.5em;
+			background-attachment: fixed;
+			background-position: center;
+		}
+		#formstyle
+		{
+			height: 60vh;
+			width: 70vw;
+			border-radius: 2em;
+			background-color: white;
 			background-image: url("assets/galaxy.jpg");
 			background-size: cover;
-			color: white
-			
+			background-attachment: fixed;
+			background-position: center;
+			position: relative;
+			margin: auto;
+			top: 15vh;
+			box-shadow: 0 0 80px 20px rgba(0,0,0,0.5);
+		}
+		#formstyle > form
+		{
+			position: relative;
+			padding: 2em;
+		}
+		#formstyle > form input, select
+		{
+			height: 2em;
+			border: 1px solid grey;
+			border-radius: 2em;
+			text-align: center;
+		}
+		#formstyle > form input[type=text]
+		{
+			width: 30vw;
+		}
+		#formstyle > form select
+		{
+			width: 20vw;
+		}
+		.mybutton
+		{
+			position: relative;
+			margin-left: auto;
+			margin-right: auto;
+			color: white;
+			width:20%;
+			background-color: #e64a19;
+			border-radius: 2em;
+		}
+		.mybutton > a
+		{
+			text-decoration: none;
+			color: white;
+			font-weight: bolder;
 		}
 	</style>
 </head>
 <body>
+		<div id="formstyle">
 		<form action="search_data_output.ejs" method="POST">
-		<input type="text" name="cat" placeholder="Search category">
+		<h3>SEARCH DATA</h3>
+		<input type="text" name="cat" placeholder="Search by category">
+		<br/><br/><br/>Filter according to
 		<select name="filter">
 			<option value="Price">Price</option>
 			<option value="Quantity">Quantity</option>
-			<option value="Nothing">Nothing</option>
+			<option value="ExpiresIn">Expiry date</option>
+			<option value="Nothing" selected="selected">Nothing</option>
 		</select>
+		<br/><br/><br/>Aggregate over&nbsp;&nbsp;&nbsp;
 		<select name="aggregate_over">
 			<option value="Price">Price</option>
 			<option value="Quantity">Quantity</option>
-			<option value="Nothing">Nothing</option>
+			<option value="Nothing" selected="selected">Nothing</option>
 		</select>
-		<input type="submit" name="submit" value="submit">
+		<br/><br/><br/><input class="mybutton" type="submit" name="submit" value="Search">
 		</form>
+		</div>
 </body>
 </html>

@@ -18,6 +18,11 @@
 		<h1>ITEM NAME: <%=  temp %></h1>
 		<h2>PRICE: <%= Product_Info[x].Price %></h2>
 		<h2>QUANTITY: <%= Product_Info[x].Quantity %></h2>
+		<h2>EXPIRES IN: <%= Product_Info[x].ExpiresIn %></h2>
 		<% } } %>
+
+		<% if(aggregate_output!="") { %>
+			<h1><%= aggregate_output %></h1>
+	    <% } %>
 </body>
 </html>

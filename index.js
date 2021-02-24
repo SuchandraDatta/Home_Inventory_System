@@ -27,6 +27,7 @@ app.post("/successpage", objForUrlencoded, (req,res)=>{
 app.post("/search_data_output.ejs", (req, res, next)=>{
 	category = req.body["cat"]
 	filter_criteria = req.body["filter"]
-	firebase_functions.firebase_retrieve_data(category,res,filter_criteria)
+	aggregate_over = req.body["aggregate_over"]
+	firebase_functions.firebase_retrieve_data(category,res,filter_criteria, aggregate_over)
 })
 app.listen(1337, ()=>{ console.log("Listening on port 1337")})
