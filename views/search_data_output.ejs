@@ -2,27 +2,97 @@
 <html>
 <head>
 	<title>This is search data output page</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style type="text/css">
 		body
 		{
-			background-image: url("assets/galaxy.jpg");
 			background-size: cover;
-			color: white
-			
+			background-position: right;
+			color: white;
+			font-size: 2em;
+			height: 100vh;
+			text-align: center;
+			background-image: url("assets/galaxy.jpg");
+		}
+		table
+		{
+			width: 90%;
+			height: 50%;
+			margin: auto;
+			position: relative;
+			top: 25%;
+			font-weight: bolder;
+			background-color: rgba(0,0,0,0.4);
+		}
+		td
+		{
+			width: 40vh;
+			height: 5vh;
+		}
+		#table-container
+		{
+			position: relative;
+			top: 5vh;
+			background-color: white;
+			height: 80vh;
+			border-radius: 2em;
+			width: 90%;
+			margin: auto;
+			background-size: cover;
+			background-position: center;
+			background-image: url("assets/galaxy.jpg");
+			margin-bottom: 2vh;
+			box-shadow: 0 0 80px 40px rgba(255,255,255,0.6);
+		}
+		.flex-container
+		{
+			display: flex;
+			justify-content: center;
+			background-color: rgba(255,255,255,0.5);
+			margin: 1em;
+		}
+		.flex-item
+		{
+			margin: 0.1em;
+			height: 4vh;
+			width: 20vw;
+			padding: 1em;
+			color: black;
+			font-weight: bolder;
 		}
 	</style>
 </head>
 <body>
-
-		<% if(Product_Info!={}) { for(x in Product_Info) { temp = x.split(" ")[0]; temp = temp.substr(0, temp.lastIndexOf("_"))%>
-		<h1>ITEM NAME: <%=  temp %></h1>
-		<h2>PRICE: <%= Product_Info[x].Price %></h2>
-		<h2>QUANTITY: <%= Product_Info[x].Quantity %></h2>
-		<h2>EXPIRES IN: <%= Product_Info[x].ExpiresIn %></h2>
-		<% } } %>
-
-		<% if(aggregate_output!="") { %>
+	<h2>PRODUCT DETAILS</h2>
+	<% if(aggregate_output!="") { %>
 			<h1><%= aggregate_output %></h1>
-	    <% } %>
+	<% } else if(Product_Info!={}) { %>
+	<div class="flex-container" style="background-color: transparent;">
+		<div class="flex-item" style=" color: white;">Product Name</div>
+		<div class="flex-item" style=" color: white;">Price</div>
+		<div class="flex-item" style=" color: white;">Quantity</div>
+		<div class="flex-item" style=" color: white;">Expiry Date</div>
+		<div class="flex-item" style=" color: white;">Actions</div>
+	</div>
+	<% for(x in Product_Info) { temp = x.split(" ")[0]; temp = temp.substr(0, temp.lastIndexOf("_"))%>
+	<div class="flex-container">
+		<div class="flex-item" style="width: 30vw;">
+			<%=  temp %>
+		</div>
+		<div class="flex-item">
+			<%= Product_Info[x].Price %>
+		</div>
+		<div class="flex-item">
+			<%= Product_Info[x].Quantity %>
+		</div>
+		<div class="flex-item">
+			<%= Product_Info[x].ExpiresIn %>
+		</div>
+		<div class="flex-item">
+			<a href="/"><i class="fa fa-edit" style="font-size:36px"></i></a>
+			<a href="/successpage"><i class="fa fa-trash" aria-hidden="true"></i></a>
+		</div>
+	</div>
+	<% } } %>
 </body>
 </html>
