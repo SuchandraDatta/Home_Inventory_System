@@ -25,7 +25,7 @@
 			position: relative;
 			margin: auto;
 			top: 15vh;
-			box-shadow: 0 0 80px 20px rgba(0,0,0,0.5);
+			box-shadow: 0 0 80px 40px rgba(0,0,0,0.5);
 		}
 		#formstyle > form
 		{
@@ -69,7 +69,9 @@
 		<div id="formstyle">
 		<form action="search_data_output.ejs" method="POST">
 		<h3>SEARCH DATA</h3>
-		<input type="text" name="cat" placeholder="Search by category">
+		<input type="text" name="cat" placeholder="Search by category" required="required">
+		<h4>Search by product name</h4>
+		<input type="text" name="prodName" placeholder="Product Name">
 		<br/><br/><br/>Filter according to
 		<select name="filter">
 			<option value="Price">Price</option>
@@ -83,6 +85,9 @@
 			<option value="Quantity">Quantity</option>
 			<option value="Nothing" selected="selected">Nothing</option>
 		</select>
+		<br/><br/>OR
+		Expiring in (months):
+		<input type="number" name="expInMonths" placeholder="Enter month count">
 		<br/><br/><br/><input class="mybutton" type="submit" name="submit" value="Search">
 		</form>
 		</div>

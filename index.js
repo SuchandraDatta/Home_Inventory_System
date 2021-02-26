@@ -19,6 +19,10 @@ app.get("/save_data.ejs", (req,res,next)=>{
 app.get("/search_data.ejs", (req,res,next)=>{
 	res.render("search_data")
 })
+app.get("/delete", (req,res) => {
+	console.log("ID TO DELETE: ", req.query.id)
+	firebase_functions.firebase_delete_data(req.query.category, res, req.query.id)
+})
 app.post("/successpage", objForUrlencoded, (req,res)=>{
 	console.log(firebase_functions)
 	firebase_functions.firebase_save_data(req.body, res)
@@ -28,6 +32,12 @@ app.post("/search_data_output.ejs", (req, res, next)=>{
 	category = req.body["cat"]
 	filter_criteria = req.body["filter"]
 	aggregate_over = req.body["aggregate_over"]
-	firebase_functions.firebase_retrieve_data(category,res,filter_criteria, aggregate_over)
+	prodName = req.body["prodName"]
+	exprInMonths = parseInt(req.body["exprInMonths"])
+	firebase_functions.firebase_retrieve_data(category,res,filter_criteria, aggregate_over, prodName, exprInMonths)
+})
+app.post("/update", objForUrlencoded, (req,res) => {
+	console.log(req.body)
+	firebase_functions.firebase_update_data(req.body["category"], res, req.body)
 })
 app.listen(1337, ()=>{ console.log("Listening on port 1337")})

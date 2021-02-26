@@ -60,6 +60,42 @@
 			color: black;
 			font-weight: bolder;
 		}
+		.mybutton
+		{
+			position: relative;
+			margin-left: auto;
+			margin-right: auto;
+			color: white;
+			width:20%;
+			background-color: #e64a19;
+			border-radius: 2em;
+		}
+		form
+		{
+			height: 80vh;
+			padding: 0.5em;
+			position: absolute;
+			width: 80vw;
+			margin-left: 10vw;
+			background-color: rgba(0,0,0,0.8);
+			z-index: 1;
+		}
+		form input, button
+		{
+			position: relative;
+			height: 2em;
+			border: 1px solid grey;
+			border-radius: 2em;
+			text-align: center;
+		}
+		form button
+		{
+			margin-bottom: 2em;
+		}
+		form > p
+		{
+			margin: 0.5em;
+		}
 	</style>
 </head>
 <body>
@@ -71,7 +107,7 @@
 		<div class="flex-item" style=" color: white;">Product Name</div>
 		<div class="flex-item" style=" color: white;">Price</div>
 		<div class="flex-item" style=" color: white;">Quantity</div>
-		<div class="flex-item" style=" color: white;">Expiry Date</div>
+		<div class="flex-item" style=" color: white;">Expires in(months)</div>
 		<div class="flex-item" style=" color: white;">Actions</div>
 	</div>
 	<% for(x in Product_Info) { temp = x.split(" ")[0]; temp = temp.substr(0, temp.lastIndexOf("_"))%>
@@ -89,10 +125,87 @@
 			<%= Product_Info[x].ExpiresIn %>
 		</div>
 		<div class="flex-item">
-			<a href="/"><i class="fa fa-edit" style="font-size:36px"></i></a>
-			<a href="/successpage"><i class="fa fa-trash" aria-hidden="true"></i></a>
+			<i class="fa fa-edit" style="font-size:36px" onclick="show_form('<%= x %>', <%=Product_Info[x].Price%>, <%=Product_Info[x].Quantity%>, <%=Product_Info[x].ExpiresIn%>, '<%= category %>')"></i>
+			<a href="/delete?id=<%= x %>&category=<%= category%>"><i class="fa fa-trash" aria-hidden="true""></i></a>
 		</div>
 	</div>
 	<% } } %>
 </body>
+<script type="text/javascript">
+	function show_form(prodName, price, quantity, expiresIn, category)
+	{
+		const newStuff = document.createElement("div")
+		const newNode = document.createElement("form")
+		newNode.setAttribute("method", "post")
+		newNode.setAttribute("action", "/update")
+
+		const input1 = document.createElement("input")
+		input1.setAttribute("type","text")
+		input1.setAttribute("name", "productName")
+		input1.setAttribute("value", prodName)
+		input1.setAttribute("required", "required")
+		input1.style.cssText = "display:none;"
+		
+		const input2 = document.createElement("input")
+		input2.setAttribute("type", "number")
+		input2.setAttribute("name", "price")
+		input2.setAttribute("value", price)
+		input2.setAttribute("required", "required")
+
+		const input3 = document.createElement("input")
+		input3.setAttribute("type", "number")
+		input3.setAttribute("name", "quantity")
+		input3.setAttribute("value", quantity)
+		input3.setAttribute("required", "required")
+
+		const input4 = document.createElement("input")
+		input4.setAttribute("type", "number")
+		input4.setAttribute("name", "expiry")
+		input4.setAttribute("value", expiresIn)
+		input4.setAttribute("required", "required")
+
+		const input5 = document.createElement("input")
+		input5.setAttribute("type", "text")
+		input5.setAttribute("name", "category")
+		input5.setAttribute("value", category)
+		input5.setAttribute("required", "required")
+		input5.style.cssText = "display: none;"
+
+		const submitButton = document.createElement("button")
+		submitButton.setAttribute("value", "Submit")
+		submitButton.setAttribute("name", "Submit")
+		submitButton.classList.add("mybutton")
+		submitButton.innerHTML = "Submit"
+
+		newNode.appendChild(document.createElement("br"))
+		newNode.appendChild(input1)
+		newNode.appendChild(document.createElement("br"))
+		heading2 = document.createElement("p")
+		heading2.innerHTML = "Product Price: "
+		newNode.appendChild(heading2)
+		newNode.appendChild(input2)
+		newNode.appendChild(document.createElement("br"))
+		heading3 = document.createElement("p")
+		heading3.innerHTML = "Product Quantity: "
+		newNode.appendChild(heading3)
+		newNode.appendChild(input3)
+		newNode.appendChild(document.createElement("br"))
+		heading4 = document.createElement("p")
+		heading4.innerHTML = "Expires In: "
+		newNode.appendChild(heading4)
+		newNode.appendChild(input4)
+		
+		newNode.appendChild(input5)
+
+
+		newNode.appendChild(document.createElement("br"))
+		newNode.appendChild(submitButton)
+
+
+		const existing_stuff = document.getElementsByClassName("flex-container")[0]
+		newStuff.appendChild(newNode)
+		document.body.insertBefore(newStuff, existing_stuff)
+		console.log(prodName, price, quantity, expiresIn)
+	}
+</script>
 </html>
