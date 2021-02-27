@@ -72,14 +72,14 @@
 		<input type="text" name="cat" placeholder="Search by category" required="required">
 		<h4>Search by product name</h4>
 		<input type="text" name="prodName" placeholder="Product Name">
-		<br/><br/><br/>Filter according to
+		<br/><br/><br/>OR Filter according to
 		<select name="filter">
 			<option value="Price">Price</option>
 			<option value="Quantity">Quantity</option>
-			<option value="ExpiresIn">Expiry date</option>
+			<option value="ExpiryDate">Expiry date</option>
 			<option value="Nothing" selected="selected">Nothing</option>
 		</select>
-		<br/><br/><br/>Aggregate over&nbsp;&nbsp;&nbsp;
+		<br/><br/><br/>OR Aggregate over&nbsp;&nbsp;&nbsp;
 		<select name="aggregate_over">
 			<option value="Price">Price</option>
 			<option value="Quantity">Quantity</option>
@@ -87,7 +87,7 @@
 		</select>
 		<br/><br/>OR
 		Expiring in (months):
-		<input type="number" name="expInMonths" placeholder="Enter month count">
+		<input type="number" name="exprInMonths" placeholder="Enter month count">
 		<br/><br/><br/><input class="mybutton" type="submit" name="submit" value="Search">
 		</form>
 		</div>
