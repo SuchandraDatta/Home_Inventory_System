@@ -1,2 +1,5 @@
+!node_modules/
+
 node_modules/*
+
 !/node_modules/firebase_CRUD_custom_code/*
