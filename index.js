@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 const fs = require("fs")
 const body_parser = require("body-parser")
-const firebase_functions = require("firebase_CRUD_custom_code/firebase_functions")
+const firebase_functions = require("./firebase_CRUD_custom_code/firebase_functions.js")
 objForUrlencoded = body_parser.urlencoded({extended:false})
 
 
