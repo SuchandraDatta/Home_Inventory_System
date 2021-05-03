@@ -38,7 +38,7 @@ firebase_save_data = async (reqbody, response) => {
 			}
 		}
 	}
-	NOTE THAT THE PRODUCT NAME MUST NOT HAVE ANY SPACES PREFERALY HAVE ONLY LETTERS, DIGITS AND UNDERSCORE SIGN
+
 	*/
 	save_to_database = {}
 	//console.log(reqbody)
@@ -166,7 +166,7 @@ firebase_retrieve_data = async (category="",response,filter_criteria="Nothing", 
 	}
 	else if(filter_criteria != "Nothing" && category!= "")
 	{ 
-		//Sorted by price, qunatity, expiry date
+		//Sorted by price, quantity, expiry date
 		console.log("Filtering over", filter_criteria)
 		const ordered_data = await db.collection(category).orderBy(filter_criteria).get() 
 		helper_func_iterate_docs(ordered_data, response, category, "No data for filter by"+filter_criteria)

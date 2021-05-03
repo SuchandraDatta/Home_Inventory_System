@@ -54,7 +54,7 @@
 		.flex-item
 		{
 			margin: 0.1em;
-			height: 4vh;
+			height: 6vh;
 			width: 20vw;
 			padding: 1em;
 			color: black;
@@ -112,7 +112,7 @@
 	</div>
 	<% for(x in Product_Info) { temp = x.split(" ")[0]; temp = temp.substr(0, temp.lastIndexOf("_"))%>
 	<div class="flex-container">
-		<div class="flex-item" style="width: 30vw;">
+		<div class="flex-item" style="width: 25vw; word-break: break-word;">
 			<%=  temp %>
 		</div>
 		<div class="flex-item">
@@ -121,7 +121,7 @@
 		<div class="flex-item">
 			<%= Product_Info[x].Quantity %>
 		</div>
-		<div class="flex-item" style="width: 50vw;">
+		<div class="flex-item" style="width: 45vw;">
 			<%= Product_Info[x].ExpiryDate %>
 		</div>
 		<div class="flex-item">
