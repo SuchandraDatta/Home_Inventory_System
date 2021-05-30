@@ -1,7 +1,7 @@
 /*Set up Admin API for Firebase*/
 const admin = require('firebase-admin');
 //Define path to secret key generated for service account
-const serviceAccount = require("config/PATH TO FILE");
+const serviceAccount = require("config/homeinventorysystem-20239-firebase-adminsdk-wvuvm-2a778d5df4.json");
 //Initialize the app
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
@@ -12,9 +12,8 @@ define_timestamp = () => {
 	d = new Date()
 	return (d.getDate()+"-"+(d.getMonth()+1)+"-"+d.getFullYear()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()+":"+d.getMilliseconds())
 }
-
-firebase_save_data = async (reqbody, response) => {
-	/*Scheme of data from form
+change_schema = (reqbody) =>{
+	/*Schema of data from form
 	{ 
 		"productName1":...,
 		"productCategory1":...,
@@ -72,7 +71,15 @@ firebase_save_data = async (reqbody, response) => {
 		}
 	}
 	//console.log(save_to_database)
-	//let db = admin.database()
+	return save_to_database
+}
+
+firebase_save_data = async (reqbody, response) => {
+	//Check if saving product info or note info, if product info, convert to required schema and save. For just notes, no need to change schema, just save it directly.
+	if("productCategory1" in reqbody)	
+	{
+		save_to_database = change_schema(reqbody)
+	}
 	let db = admin.firestore()
 	try
 	{
@@ -83,14 +90,6 @@ firebase_save_data = async (reqbody, response) => {
 					await db.collection(key).doc(prod).set(save_to_database[key][prod])
 				}
 		}
-		/*if(db.ref("/").orderByChild(key).limitToFirst(1)!={})
-		{
-			ref.update(save_to_database[key], (err)=>{ if(err) response.render("failurepage"); else response.render("successpage")})
-		}
-		else
-		{
-			ref.set(save_to_database[key], (err)=>{ if(err) response.render("failurepage"); else response.render("successpage")})
-		}*/
 		response.render("successpage")
 	}
 	catch(error)
@@ -175,7 +174,7 @@ firebase_retrieve_data = async (category="",response,filter_criteria="Nothing", 
 	{
 		//Nothing specified, show by category
 		const ordered_data = await db.collection(category).get()
-		helper_func_iterate_docs(ordered_data, response, category, "No data forg given category")
+		helper_func_iterate_docs(ordered_data, response, category, "No data for given category")
 	}
 	else
 		response.render("failurepage")
