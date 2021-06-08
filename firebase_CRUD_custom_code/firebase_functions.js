@@ -1,7 +1,7 @@
 /*Set up Admin API for Firebase*/
 const admin = require('firebase-admin');
 //Define path to secret key generated for service account
-const serviceAccount = require("config/FILEPATH");
+const serviceAccount = require("config/homeinventorysystem-20239-firebase-adminsdk-wvuvm-2a778d5df4.json");
 //Initialize the app
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
