@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>This is the notes page</title>
+	<style type="text/css">
+	    .flex-container
+	    {
+	    	display: flex;
+	    	justify-content: center;
+	    	flex-wrap: wrap;
+	    }
+	    .notescreen
+	    {
+	    	height: 30vh;
+	    	width: 60vw;
+	    	background-color: pink;
+	    	position: relative;
+	    	margin-top: 10vh;
+	    	font-size: 3em;
+	    }
+	    .flex-item
+	    {
+	    	width: 60vw;
+	    }
+	    .flex-item > i
+	    {
+	    	text-align: center;
+	    	margin-left: 1em;
+	    }
+	</style>
+</head>
+<body>
+	<div class="flex-container">
+		<div class="flex-item"><textarea class="notescreen" placeholder="Write a note"></textarea></div>
+		<div class="flex-item">
+			<i class="fa fa-edit" style="font-size:100px"></i>	
+			<i class="fa fa-trash" aria-hidden="true" style="font-size:100px"></i>
+		</div>
+	</div>
+	<div class="flex-container">
+	</div>
+</body>
+</html>
